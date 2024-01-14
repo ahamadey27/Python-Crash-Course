@@ -7,3 +7,6 @@ whiteSpace = whiteSpace.lstrip() #remove whitespace to the left
 
 print(whiteSpace)
 
+urlExample = 'http://removehttp.com'
+urlExample = urlExample.removeprefix('http://') #removes the prefix between the parenthesis
+print(urlExample)
