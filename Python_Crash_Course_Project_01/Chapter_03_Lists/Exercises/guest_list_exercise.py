@@ -24,6 +24,7 @@ dinnerGuests.append('Dirk Diggler')
 for dinnerGuest in dinnerGuests:
     print(f"Hello, {dinnerGuest}! Please join us for dinner!")
     
+#.pop() removes and stores the last element of list 
 deletedGuest = dinnerGuests.pop() 
 print(deletedGuest + " sorry you're not on the list")
 
@@ -39,3 +40,6 @@ print(deletedGuest + " sorry you're not on the list")
 print(f"{dinnerGuests[0]} and {dinnerGuests[1]} you two are good to go")
 
 print(dinnerGuests)
+
+#length of a list
+print(len(dinnerGuests))
