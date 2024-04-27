@@ -7,7 +7,7 @@ class Car:
         self.model = model
         self.year = year
         self.odometer_reading = 0
- 
+
     def get_descriptive_name(self):
         """Return a neatly formatted descriptive name."""
         long_name = f"{self.year} {self.make} {self.model}"
@@ -28,6 +28,7 @@ class Car:
         """Add the given amount to the odometer reading."""
         self.odometer_reading += miles
 
+
 class Battery:
     """A simple attempt to model a battery for an electric car."""
 
@@ -47,16 +48,16 @@ class Battery:
             range = 225
 
         print(f"This car can go about {range} miles on a full charge.")
-
-    def upgrade_battery(self):
-        """Upgrade the battery if possible."""
-        if self.battery_size == 40:
-            self.battery_size = 65
-            print("Upgraded the battery to 65 kWh.")
-        else:
-            print("The battery is already upgraded.")
-    
         
+    def upgrade_battery(self):
+        """upgrade battery if possible"""
+        if self.battery_size == 40:
+            self.battery_size == 65
+            print('Upgrade the battery to 645')
+        else:
+            print("the battery is already upgraded")
+
+
 class ElectricCar(Car):
     """Represent aspects of a car, specific to electric vehicles."""
 
@@ -69,10 +70,7 @@ class ElectricCar(Car):
         self.battery = Battery()
 
 
-print("Make an electric car, and check the range:")
 my_leaf = ElectricCar('nissan', 'leaf', 2024)
-my_leaf.battery.get_range()
-
-print("\nUpgrade the battery, and check the range again:")
-my_leaf.battery.upgrade_battery()
+print(my_leaf.get_descriptive_name())
+my_leaf.battery.describe_battery()
 my_leaf.battery.get_range()
