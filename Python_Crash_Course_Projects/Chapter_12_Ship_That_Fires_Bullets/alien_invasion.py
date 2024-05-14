@@ -26,19 +26,39 @@ class AlienInvasion:
     def run_game(self):
         """Starts the main loops for the game"""
         while True:
-            #watch for keyboard and mouse events
+            self._check_events() #To call a method from within the class, use dot notation with the vairiable self and the name of the method 
+            self.ship.update()
+            self._update_screen()          
+            
+            self.clock.tick(60) #set clock (frame rate) to 60 frames per second (tick takes one argument that sets frame rate)
+    
+    def _check_events(self):
+         #watch for keyboard and mouse events
             for event in pygame.event.get(): #event is action that the user perfroms during game play
                 if event.type == pygame.QUIT:
                     sys.exit()
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RIGHT:
+                        self.ship.moving_right = True
+                    elif event.key == pygame.K_LEFT:
+                        self.ship.moving_left = True
+                        
+                elif event.type == pygame.KEYUP:
+                    if event.key == pygame.K_RIGHT:
+                        self.ship.moving_right = False
+                    elif event.key == pygame.K_LEFT:
+                        self.ship.moving_left = False
                     
-            #Redraw screen during each pass of the loop. fill method takes one argument: color
-            self.screen.fill(self.settings.bg_color) 
-            self.ship.blitme()
-                    
-            #Make the most recently drawn screen visible
-            pygame.display.flip()
-            self.clock.tick(60) #set clock (frame rate) to 60 frames per second (tick takes one argument that sets frame rate)
-            
+                        
+    
+    def _update_screen(self):
+        """Updates images on the screen and flips to the new screen""" 
+        #Redraw screen during each pass of the loop. fill method takes one argument: color
+        self.screen.fill(self.settings.bg_color) 
+        self.ship.blitme()                 
+        #Make the most recently drawn screen visible
+        pygame.display.flip()    
+              
 if __name__ == '__main__': 
     #Make game instance and run game
     ai = AlienInvasion()

@@ -9,11 +9,21 @@ class Ship():
         self.screen_rect = ai_game.screen.get_rect()
         
         #Load the ship image and get its react
-        self.image = pygame.image.load('C:\Users\hamad\Documents\GitHub\Python-Crash-Course\Python_Crash_Course_Projects\Chapter_12_Ship_That_Fires_Bullets\images\ship.bmp')
+        self.image = pygame.image.load('Python_Crash_Course_Projects\Chapter_12_Ship_That_Fires_Bullets\images\ship.bmp')
         self.rect = self.image.get_rect()
         
         #Start each new ship at the bottom center of the screen
         self.rect.midbottom = self.screen_rect.midbottom 
+        #Movement flag; start with a ship that's not moving
+        self.moving_right = False
+        self.moving_left = False
+        
+    def update(self):
+        """Update ship position based on the movement flag"""
+        if self.moving_right:
+            self.rect.x += 1
+        if self.moving_left:
+            self.rect.x += -1
         
     def blitme(self):
         """Draw the ship at its current location"""
